@@ -1,9 +1,4 @@
 # Node.js
-- task: AzureMysqlDeployment@1
-  inputs:
-    azureSubscription: 'Azure subscription 1(1)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
-    SqlUsername: 'usermysql'
-    SqlPassword: 'Ijrm1121'
 
 trigger:
 - master
@@ -12,6 +7,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: AzureMysqlDeployment@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(1)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
+    ServerName: 'sophosbravenewcoin.database.windows.net'
+    SqlUsername: 'usermysql'
+    SqlPassword: 'Ijrm1121'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
