@@ -3,11 +3,7 @@ const Coin = require("../models").Coin;
 module.exports = function(app, route) {
 
     function getCoinsByUser(req, res){
-        if (!req.params.id) {
-            res.status(400).send({err : 'Debe especificar un usuario'});
-            return;
-        }
-        
+       
         return Coin.findAll({ where: { userId: req.params.id} ,raw: true})
             .then(results => {
                 if(results.length > 0) {

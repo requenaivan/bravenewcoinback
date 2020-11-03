@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV === 'test' ?  'test' :'development' ;
 const config = require(__dirname + '/config/config.json')[env];
 const app = express();
 const route = express.Router(); 
-const Sequelize = require('sequelize');
+const jwt = require("jsonwebtoken");
 
 app.set('key', config.key);
 

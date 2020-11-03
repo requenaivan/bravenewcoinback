@@ -28,8 +28,11 @@
   "jest": {
     "testEnviroment": "node",
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+      "/node_modules/",
+      "server.js",
+      "models/index.js"
+    ],
+    "collectCoverage": true
   },
   "test": "jest"
 }
