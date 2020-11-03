@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const config = require(__dirname + '/config/config.json')[env];
 const app = express();
 const route = express.Router(); 
+const Sequelize = require('sequelize');
 
 app.set('key', config.key);
 
@@ -21,12 +22,19 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./models");
-db.sequelize.sync();
+let db;
 
-db.sequelize.sync({ force: false }).then(() => {
-    console.log("Se sincronizo la bd.");
-});
+if(process.env.NODE_ENV === 'test') {
+  db = new Sequelize('sqlite::memory:', { force: true, logging: false});
+} else {
+  const db = require("./models");
+  db.sequelize.sync();
+  
+  db.sequelize.sync({ force: false }).then(() => {
+      console.log("Se sincronizo la bd.");
+  });
+}
+
 
 route.use((req, res, next) => {
     const token = req.headers['access-token'];
@@ -57,6 +65,8 @@ app.get("/", (req, res) => {
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+const server = app.listen(PORT, () => {
+  
 });
+
+module.exports = server;

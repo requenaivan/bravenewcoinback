@@ -16,7 +16,7 @@ module.exports = function(app, route) {
             return;
         }
         
-        User.findOne({ where: { username: req.body.username.toLowerCase()}, raw: true })
+        return User.findOne({ where: { username: req.body.username.toLowerCase()}, raw: true })
             .then(result => {
                 if(result) {
                     const user = result;
