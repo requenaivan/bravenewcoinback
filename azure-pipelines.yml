@@ -25,13 +25,7 @@ steps:
   displayName: Run Tests
 
 - task: PublishTestResults@2
-  displayName: 'Publish unit test'
   inputs:
-    testResultsFiles: 'clover.xml'
-    testRunTitle: 'Test Unit with Jest'
-    searchFolder: 'braveNewCoin/coverage'
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '**/clover*.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/coverage/*'
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/clover.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/coverage/'
