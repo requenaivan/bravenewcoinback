@@ -7,16 +7,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: MysqlDeploymentOnMachineGroup@1
-  displayName: 'Deploy Using : InlineSqlTask'
+- task: DownloadGithubNpmPackage@1
   inputs:
-    TaskNameSelector: InlineSqlTask
-    SqlInline: |
-      CREATE DATABASE IF NOT EXISTS bravenewcoin;
-      use bravenewcoin;
-    ServerName: localhost
-    SqlUsername: root
-    SqlPassword: P2ssw0rd
+    packageName: 'sqlite3'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
