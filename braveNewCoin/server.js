@@ -53,8 +53,10 @@ route.use((req, res, next) => {
     }
  });
 
-require("./routes/userRoutes")(app, route);
-require("./routes/CoinRoutes")(app, route);
+require(__dirname + "/routes/userRoutes")(app, route);
+require(__dirname + "/routes/CoinRoutes")(app, route);
+//require("./routes/userRoutes")(app, route);
+//require("./routes/CoinRoutes")(app, route);
 
 app.use("/api-docs", require("./routes/api-docs"));
 // simple route
