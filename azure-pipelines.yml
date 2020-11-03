@@ -22,14 +22,14 @@ steps:
   displayName: 'Install JestUnit'
   workingDirectory: 'braveNewCoin'
 
-- task: Npm@1
-  inputs:
-    workingDir: 'braveNewCoin'
-    command: custom
-    customCommand: 'test'
-  displayName: Run Tests
-
 - task: CmdLine@2
+  displayName: 'Run Test'
   inputs:
     script: 'npm test'
     workingDirectory: 'braveNewCoin'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junit.xml'
+    testRunTitle: 'Publish Result'
