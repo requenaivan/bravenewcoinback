@@ -1,7 +1,9 @@
 # Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+- task: AzureMysqlDeployment@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(1)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
+    SqlUsername: 'usermysql'
+    SqlPassword: 'Ijrm1121'
 
 trigger:
 - master
