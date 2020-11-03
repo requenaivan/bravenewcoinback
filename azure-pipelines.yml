@@ -39,13 +39,7 @@ steps:
   inputs:
     SonarCloud: 'Sonar Cloud'
     organization: 'requenaivan'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'requenaivan_sophosbravenewcoinback'
-    cliProjectName: 'sophosbravenewcoinback'
-    cliSources: 'braveNewCoin'
+    scannerMode: 'MSBuild'
+    projectKey: 'requenaivan_sophosbravenewcoinback'
+    projectName: 'sophosbravenewcoinback'
     extraProperties: 'sonar.exclusions=**/tests/**'
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '1000'
