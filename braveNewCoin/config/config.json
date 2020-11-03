@@ -11,5 +11,16 @@
           "timestamps": false
     },
     "key":"Brav3NewC0in2020*"
+  },
+  "test":{
+    "dialect": "sqlite",
+    "storage": "./bravenewcoin.sqlite3",
+    "database": "bravenewcoin.sqlite3",
+    "define": {
+      "freezeTableName": true,
+      "timestamps": false
+    },
+    "key":"Brav3NewC0in2020*"
   }
+
 }

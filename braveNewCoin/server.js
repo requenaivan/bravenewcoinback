@@ -1,8 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const env = 'development';
-const jwt = require("jsonwebtoken");
+const env = process.env.NODE_ENV === 'test' ?  'test' :'development' ;
 const config = require(__dirname + '/config/config.json')[env];
 const app = express();
 const route = express.Router(); 
@@ -22,18 +21,13 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let db;
+const db = require("./models");
+db.sequelize.sync();
 
-if(process.env.NODE_ENV === 'test') {
-  db = new Sequelize('sqlite::memory:', { force: true, logging: false});
-} else {
-  const db = require("./models");
-  db.sequelize.sync();
-  
-  db.sequelize.sync({ force: false }).then(() => {
-      console.log("Se sincronizo la bd.");
-  });
-}
+db.sequelize.sync({ force: false }).then(() => {
+  console.log("Se sincronizo la bd.");
+});
+
 
 
 route.use((req, res, next) => {
