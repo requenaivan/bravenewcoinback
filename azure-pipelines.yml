@@ -24,4 +24,5 @@ steps:
   inputs:
     command: custom
     customCommand: 'test --forceExit'
+    workingDir: 'braveNewCoin'
   displayName: 'Run Test'
