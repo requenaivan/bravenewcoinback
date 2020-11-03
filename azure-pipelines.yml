@@ -9,10 +9,12 @@ pool:
 steps:
 - task: AzureMysqlDeployment@1
   inputs:
-    azureSubscription: 'Azure subscription 1(1)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
+    azureSubscription: 'Azure subscription 1(2)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
     ServerName: 'sophosbravenewcoin.database.windows.net'
     SqlUsername: 'usermysql'
     SqlPassword: 'Ijrm1121'
+    TaskNameSelector: 'SqlTaskFile'
+    IpDetectionMethod: 'AutoDetect'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
