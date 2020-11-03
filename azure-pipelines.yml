@@ -30,10 +30,8 @@ steps:
     testResultsFiles: 'clover.xml'
     testRunTitle: 'Test Unit with Jest'
     searchFolder: 'braveNewCoin/coverage'
-
-- task: PublishCodeCoverageResults@1
+- task: PublishTestResults@2
   inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 'braveNewCoin/coverage/clover.xml'
-    pathToSources: 'braveNewCoin/routes/*'
-    reportDirectory: 'braveNewCoin/coverage/clover.xml'
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/clover*.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/coverage/*'
