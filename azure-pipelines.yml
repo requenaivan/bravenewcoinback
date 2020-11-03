@@ -43,3 +43,7 @@ steps:
     projectKey: 'requenaivan_sophosbravenewcoinback'
     projectName: 'sophosbravenewcoinback'
     extraProperties: 'sonar.exclusions=**/tests/**'
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '100000'
