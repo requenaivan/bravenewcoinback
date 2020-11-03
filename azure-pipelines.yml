@@ -32,5 +32,5 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     searchFolder: '$(System.DefaultWorkingDirectory)'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/reports/junit.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/braveNewCoin/reports/junit.xml'
     testRunTitle: 'Publish Result'
