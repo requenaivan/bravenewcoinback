@@ -44,7 +44,7 @@ steps:
     cliProjectKey: 'requenaivan_sophosbravenewcoinback'
     cliProjectName: 'sophosbravenewcoinback'
     cliSources: 'braveNewCoin'
-    extraProperties: 'sonar.exclusions=**/braveNewCoin/tests/**'
+    extraProperties: 'sonar.exclusions=**/tests/**'
 
 - task: SonarCloudPublish@1
   inputs:
