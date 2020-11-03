@@ -27,5 +27,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/clover.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/coverage/'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/braveNewCoin/coverage/clover.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/braveNewCoin/coverage/'
