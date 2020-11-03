@@ -7,14 +7,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzureMysqlDeployment@1
+- task: MysqlDeploymentOnMachineGroup@1
   inputs:
-    azureSubscription: 'Azure subscription 1(2)(4d528d26-1c9d-4b0b-a32e-aee685e835d2)'
-    ServerName: 'sophosbravenewcoin.database.windows.net'
-    SqlUsername: 'usermysql'
-    SqlPassword: 'Ijrm1121'
     TaskNameSelector: 'SqlTaskFile'
-    IpDetectionMethod: 'AutoDetect'
+    SqlFile: 'select * from dual;'
+    ServerName: 'localhost'
+    DatabaseName: 'bravenewcoin'
+    SqlUsername: 'root'
+    SqlPassword: 'root'
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
