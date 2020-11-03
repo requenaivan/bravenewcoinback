@@ -1,0 +1,15 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "port": 3306,
+    "database": "bravenewcoin",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "define": {
+          "freezeTableName": true,
+          "timestamps": false
+    },
+    "key":"Brav3NewC0in2020*"
+  }
+}

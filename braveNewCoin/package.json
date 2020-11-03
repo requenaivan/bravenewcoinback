@@ -1,0 +1,22 @@
+{
+  "name": "bravenewcoin",
+  "version": "v1.0",
+  "description": "Prueba Sophos",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivan requena",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
+    "swagger-jsdoc": "^5.0.0",
+    "swagger-ui-express": "^4.1.4"
+  }
+}

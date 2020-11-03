@@ -1,0 +1,62 @@
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const env = 'development';
+const jwt = require("jsonwebtoken");
+const config = require(__dirname + '/config/config.json')[env];
+const app = express();
+const route = express.Router(); 
+
+app.set('key', config.key);
+
+var corsOptions = {
+  origin: "*"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./models");
+db.sequelize.sync();
+
+db.sequelize.sync({ force: false }).then(() => {
+    console.log("Se sincronizo la bd.");
+});
+
+route.use((req, res, next) => {
+    const token = req.headers['access-token'];
+    if (token) {
+      jwt.verify(token, app.get('key'), (err, decoded) => {      
+        if (err) {
+          
+          res.status(400).send({ respuesta: "KO_TOKEN_INVALIDO", mensaje: 'Token invalido' });
+        } else {
+          req.decoded = decoded;    
+          next();
+        }
+      });
+    } else {
+      res.status(400).send({ respuesta: "KO_TOKEN_INVALIDO", mensaje: 'Token invalido' });
+    }
+ });
+
+require("./routes/userRoutes")(app, route);
+require("./routes/CoinRoutes")(app, route);
+
+app.use("/api-docs", require("./routes/api-docs"));
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenido a la api bravenewcoin." });
+});
+
+
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
