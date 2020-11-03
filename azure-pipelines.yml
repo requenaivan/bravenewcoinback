@@ -16,3 +16,14 @@ steps:
     npm install
   displayName: 'npm install'
   workingDirectory: 'braveNewCoin'
+
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: 'test'
+  displayName: Run Tests
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
