@@ -31,6 +31,6 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    searchFolder: 'braveNewCoin'
-    testResultsFiles: 'braveNewCoin/**/junit.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/reports/junit.xml'
     testRunTitle: 'Publish Result'
