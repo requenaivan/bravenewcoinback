@@ -34,3 +34,13 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
     testResultsFiles: '$(System.DefaultWorkingDirectory)/braveNewCoin/reports/junit.xml'
     testRunTitle: 'Publish Result'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Sonar Cloud'
+    organization: 'requenaivan'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'requenaivan_sophosbravenewcoinback'
+    cliProjectName: 'sophosbravenewcoinback'
+    cliSources: 'braveNewCoin'
