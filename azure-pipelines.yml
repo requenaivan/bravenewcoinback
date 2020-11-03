@@ -17,6 +17,11 @@ steps:
 
 - script: |
     npm install
-    npm run build
-  displayName: 'npm install and build'
+  displayName: 'npm install'
   workingDirectory: 'braveNewCoin'
+
+- task: Npm@1
+  inputs:
+    command: custom
+    customCommand: 'test --forceExit'
+  displayName: 'Run Test'
