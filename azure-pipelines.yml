@@ -19,6 +19,7 @@ steps:
 
 - task: Npm@1
   inputs:
+    workingDir: 'braveNewCoin'
     command: custom
     customCommand: 'test'
   displayName: Run Tests
