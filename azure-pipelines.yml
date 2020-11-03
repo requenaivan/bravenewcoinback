@@ -25,6 +25,8 @@ steps:
   displayName: Run Tests
 
 - task: PublishTestResults@2
+  displayName: 'Publish unit test'
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    testResultsFiles: 'clover.xml'
+    testRunTitle: 'Test Unit with Jest'
+    searchFolder: 'braveNewCoin/coverage'
