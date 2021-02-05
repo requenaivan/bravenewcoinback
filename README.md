@@ -1,2 +1,1 @@
-# sophosbravenewcoin
-Prueba Sophos
+# Bravenewcoin
